@@ -27,9 +27,15 @@ public class GameGraphics extends JFrame {
     public class Draw extends JPanel{
         @Override
         protected void paintComponent(Graphics g) {
-            g.setColor(logic.getBall().getColor());
-            g.fillOval(logic.getBall().getX(), logic.getBall().getY(), logic.getBall().getWidth(), logic.getBall().getHeight());
+            if (logic.getBall().isRendered()) {
+                g.setColor(logic.getBall().getColor());
+                g.fillOval(logic.getBall().getX(), logic.getBall().getY(), logic.getBall().getWidth(), logic.getBall().getHeight());
+            }
+            if (logic.getBallEnemy().isRendered()) {
+                g.setColor(logic.getBallEnemy().getColor());
+                g.fillOval(logic.getBallEnemy().getX(), logic.getBallEnemy().getY(), logic.getBallEnemy().getWidth(), logic.getBallEnemy().getHeight());
 
+            }
         }
     }
 }

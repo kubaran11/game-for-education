@@ -9,13 +9,18 @@ public class GameLogic {
 
     public GameLogic() {
         this.ball = null;
+        this.ballEnemy = null;
     }
 
     public void initialize() {
         ball = new Ball(20, 20, 50, 50, Color.BLUE);
+        ballEnemy = new Ball(250, 20, 70, 70, Color.RED);
     }
 
     public void update() {
+        if (ball.isCollided(ballEnemy.getBallRectangle())) {
+            ballEnemy.inactive();
+        }
         ball.move(2, Direction.RIGHT);
     }
 
@@ -23,4 +28,7 @@ public class GameLogic {
         return ball;
     }
 
+    public Ball getBallEnemy() {
+        return ballEnemy;
+    }
 }

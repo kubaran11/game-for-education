@@ -8,6 +8,7 @@ public class Ball {
     private int width;
     private int height;
     private Color color;
+    private boolean rendered;
 
     public Ball(int x, int y, int width, int height, Color color) {
         this.x = x;
@@ -15,6 +16,7 @@ public class Ball {
         this.width = width;
         this.height = height;
         this.color = color;
+        this.rendered = true;
     }
 
     public int getX() {
@@ -58,8 +60,12 @@ public class Ball {
     }
 
     public boolean isCollided (Rectangle otherObject) {
-        Rectangle ballRectangle = new Rectangle(x,y,width, height);
+        Rectangle ballRectangle = getBallRectangle();
         return ballRectangle.intersects(otherObject);
+    }
+
+    public Rectangle getBallRectangle () {
+        return new Rectangle(x,y,width, height);
     }
 
     public void move(int steps, Direction direction) {
@@ -77,5 +83,17 @@ public class Ball {
                 this.y += steps;
             }
         }
+    }
+
+    public void active() {
+        this.rendered = true;
+    }
+
+    public void inactive() {
+        this.rendered = false;
+    }
+
+    public boolean isRendered() {
+        return rendered;
     }
 }
