@@ -1,4 +1,6 @@
 
+import logic.Wall;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -34,7 +36,10 @@ public class GameGraphics extends JFrame {
             if (logic.getBallEnemy().isRendered()) {
                 g.setColor(logic.getBallEnemy().getColor());
                 g.fillOval(logic.getBallEnemy().getX(), logic.getBallEnemy().getY(), logic.getBallEnemy().getWidth(), logic.getBallEnemy().getHeight());
-
+            }
+            for (Wall wall: logic.getWalls()){
+                g.setColor(wall.getColor());
+                g.drawLine(wall.getStart().x, wall.getStart().y, wall.getStop().x, wall.getStop().y);
             }
         }
     }

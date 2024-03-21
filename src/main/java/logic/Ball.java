@@ -3,16 +3,14 @@ package logic;
 import java.awt.*;
 
 public class Ball {
-    private int x;
-    private int y;
+    private Coordinates position;
     private int width;
     private int height;
     private Color color;
     private boolean rendered;
 
     public Ball(int x, int y, int width, int height, Color color) {
-        this.x = x;
-        this.y = y;
+        this.position = new Coordinates(x,y);
         this.width = width;
         this.height = height;
         this.color = color;
@@ -20,19 +18,19 @@ public class Ball {
     }
 
     public int getX() {
-        return x;
+        return position.x;
     }
 
     public void setX(int x) {
-        this.x = x;
+        this.position.x = x;
     }
 
     public int getY() {
-        return y;
+        return position.y;
     }
 
     public void setY(int y) {
-        this.y = y;
+        this.position.y = y;
     }
 
     public int getWidth() {
@@ -65,22 +63,22 @@ public class Ball {
     }
 
     public Rectangle getBallRectangle () {
-        return new Rectangle(x,y,width, height);
+        return new Rectangle(this.position.x,this.position.y,width, height);
     }
 
     public void move(int steps, Direction direction) {
         switch (direction) {
             case LEFT -> {
-                this.x -= steps;
+                this.position.x -= steps;
             }
             case RIGHT -> {
-                this.x += steps;
+                this.position.x += steps;
             }
             case UP -> {
-                this.y -= steps;
+                this.position.y -= steps;
             }
             case DOWN -> {
-                this.y += steps;
+                this.position.y += steps;
             }
         }
     }
