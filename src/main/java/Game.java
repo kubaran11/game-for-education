@@ -3,6 +3,7 @@ import logic.Direction;
 import javax.swing.*;
 import java.awt.event.*;
 
+// Toto je komentář
 public class Game {
     GameLogic logic;
     public static void main(String[] args) {
